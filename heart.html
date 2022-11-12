@@ -1,0 +1,147 @@
+<!-- EDIT BY Hoàng Minh Công
+    fb: https://www.facebook.com/cong200x
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        background: rgba(0, 0, 0, 0.851);
+        /* overflow: hidden; */
+        position: relative;
+      }
+      canvas {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      #pinkboard {
+        animation: animate 1s infinite;
+      }
+
+      .text {
+        min-height: 100vh;
+        width: 100%;
+        position: relative;
+        /* color: white; */
+        text-shadow: 1px 1px 2px red, 0 0 1em white, 0 0 0.2em white;
+        font-size: 180%;
+        /* animation: animate 1s infinite; */
+      }
+
+      @keyframes animate {
+        0% {
+          transform: scale(0.85, 0.85);
+        }
+        20% {
+          transform: scale(0.85, 0.85);
+        }
+        40% {
+          transform: scale(0.9, 0.9);
+        }
+        60% {
+          transform: scale(0.85, 0.85);
+        }
+        80% {
+          transform: scale(0.9, 0.9);
+        }
+        100% {
+          transform: scale(0.85, 0.85);
+        }
+      }
+
+      .text span {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        visibility: hidden;
+      }
+
+      .text1 {
+        min-height: 100vh;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 1px 1px 2px red, 0 0 1.4em white, 0 0 0.2em white;
+        font-size: 150%;
+        animation: animate 1s infinite;
+        z-index: 1111;
+      }
+    </style>
+
+    <script>
+      if (document.cookie == "") {
+        window.location.href = "index.html";
+      }
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      document.querySelector(".text").style.color = getCookie("text");
+    </script>
+  </head>
+  <body>
+    <div class="box">
+      <canvas id="pinkboard"></canvas>
+      <canvas id="pinkboardd"></canvas>
+      <div class="text">
+        <script>
+          if (document.cookie != "") {
+            var name = getCookie("name");
+
+            for (let i = 0; i < name.length; i++) {
+              var span = document.createElement("span");
+              span.innerHTML = name[i].toUpperCase();
+              if (name[i] == "") {
+                span.innerHTML = "&nbsp";
+              }
+              document.querySelector(".text").appendChild(span);
+            }
+          } else {
+            var name = "HOÀNG MINH CÔNG";
+
+            for (let i = 0; i < name.length; i++) {
+              var span = document.createElement("span");
+              span.innerHTML = name[i].toUpperCase();
+              if (name[i] == "") {
+                span.innerHTML = "&nbsp";
+              }
+              document.querySelector(".text").appendChild(span);
+            }
+          }
+        </script>
+      </div>
+      <div class="text1"></div>
+    </div>
+
+    <script src="./1.js"></script>
+    <script src="./2.js"></script>
+
+    <script src="./a.js"></script>
+  </body>
+</html>
